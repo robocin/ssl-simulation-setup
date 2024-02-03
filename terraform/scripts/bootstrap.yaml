@@ -18,7 +18,7 @@ users:
     groups: users, admin, docker
     lock_passwd: false
     ssh_authorized_keys:
-      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJqakzRMOnYMYVAjai8JOTdg3stzshNLgHNEgzk9aOMg
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIafBLHi15W6gt040M9lb979mznlpBTS/e1mV+3BIxNf rjmr@cin.ufpe.br
 
 packages:
   - git
@@ -30,7 +30,7 @@ write_files:
       #!/bin/bash
       set -e
       cd
-      git clone https://github.com/RoboCup-SSL/ssl-simulation-setup.git
+      git clone https://github.com/robocin/ssl-simulation-setup.git
       cd ssl-simulation-setup
       echo -n "${root_domain}" > config/root_domain
       ./config/docker/init.sh
