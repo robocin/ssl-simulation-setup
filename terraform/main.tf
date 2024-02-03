@@ -116,6 +116,13 @@ resource "aws_instance" "web" {
   tags = {
     Name = "SSL-Simulation"
   }
+
+  ebs_block_device {
+    device_name = "/dev/sda1"
+    volume_type = "gp2"
+    encrypted = false
+    volume_size = 20
+  }
 }
 
 output "public_ip" {
