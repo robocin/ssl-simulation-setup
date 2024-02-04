@@ -56,7 +56,7 @@ services:
       - match
       - guacamole
 
-  team-robocin:
+  team-robocin-a:
     image: robocin/ssl-unification-robocup:latest
     user: "1000"
     restart: unless-stopped
@@ -66,7 +66,25 @@ services:
       SSH_PUBLIC_KEY:
       VNC_PW:
     volumes:
-      - team-robocin-data:/home/default:rw
+      - team-robocin-a-data:/home/default:rw
+    ports:
+      - 5901/tcp
+      - 2222/tcp
+    networks:
+      - match
+      - guacamole
+
+  team-robocin-b:
+    image: robocin/ssl-unification-robocup:latest
+    user: "1000"
+    restart: unless-stopped
+    mem_limit: "${TEAM_LIMIT_MEM}"
+    cpus: "${TEAM_LIMIT_CPU}"
+    environment:
+      SSH_PUBLIC_KEY:
+      VNC_PW:
+    volumes:
+      - team-robocin-b-data:/home/default:rw
     ports:
       - 5901/tcp
       - 2222/tcp
@@ -103,42 +121,6 @@ services:
       VNC_PW:
     volumes:
       - team-roboteamtwente-data:/home/default:rw
-    ports:
-      - 5901/tcp
-      - 2222/tcp
-    networks:
-      - match
-      - guacamole
-
-  team-uroborus:
-    image: uroborus/larcmacs:latest
-    user: "1000"
-    restart: unless-stopped
-    mem_limit: "${TEAM_LIMIT_MEM}"
-    cpus: "${TEAM_LIMIT_CPU}"
-    environment:
-      SSH_PUBLIC_KEY:
-      VNC_PW:
-    volumes:
-      - team-uroborus-data:/home/default:rw
-    ports:
-      - 5901/tcp
-      - 2222/tcp
-    networks:
-      - match
-      - guacamole
-
-  team-roboime:
-    image: roboime/robocup2021:latest
-    user: "1000"
-    restart: unless-stopped
-    mem_limit: "${TEAM_LIMIT_MEM}"
-    cpus: "${TEAM_LIMIT_CPU}"
-    environment:
-      SSH_PUBLIC_KEY:
-      VNC_PW:
-    volumes:
-      - team-roboime-data:/home/default:rw
     ports:
       - 5901/tcp
       - 2222/tcp
@@ -200,94 +182,17 @@ services:
       - match
       - guacamole
 
-  team-kgpkubs:
-    image: nisarg1631/kgpkubs:latest
-    user: "1000"
-    restart: unless-stopped
-    mem_limit: "${TEAM_LIMIT_MEM}"
-    cpus: "${TEAM_LIMIT_CPU}"
-    environment:
-      SSH_PUBLIC_KEY:
-      VNC_PW:
-    volumes:
-      - team-kgpkubs-data:/home/default:rw
-    ports:
-      - 5901/tcp
-      - 2222/tcp
-    networks:
-      - match
-      - guacamole
-
-  team-omid:
-    image: robocupssl/omid:latest
-    user: "1000"
-    restart: unless-stopped
-    mem_limit: "${TEAM_LIMIT_MEM}"
-    cpus: "${TEAM_LIMIT_CPU}"
-    environment:
-      SSH_PUBLIC_KEY:
-      VNC_PW:
-    volumes:
-      - team-omid-data:/home/default:rw
-    ports:
-      - 5901/tcp
-      - 2222/tcp
-    networks:
-      - match
-      - guacamole
-
-  team-robojackets:
-    image: kylestach/robojackets-robocup-software:latest
-    user: "1000"
-    restart: unless-stopped
-    mem_limit: "${TEAM_LIMIT_MEM}"
-    cpus: "${TEAM_LIMIT_CPU}"
-    environment:
-      SSH_PUBLIC_KEY:
-      VNC_PW:
-    volumes:
-      - team-robojackets-data:/home/default:rw
-    ports:
-      - 5901/tcp
-      - 2222/tcp
-    networks:
-      - match
-      - guacamole
-
-  team-tritons:
-    image: tritonsrcsc/triton-software:latest
-    user: "1000"
-    restart: unless-stopped
-    mem_limit: "${TEAM_LIMIT_MEM}"
-    cpus: "${TEAM_LIMIT_CPU}"
-    environment:
-      SSH_PUBLIC_KEY:
-      VNC_PW:
-    volumes:
-      - team-tritons-data:/home/default:rw
-    ports:
-      - 5901/tcp
-      - 2222/tcp
-    networks:
-      - match
-      - guacamole
-
 volumes:
   team-tigers-data:
   team-erforce-data:
   team-ubcthunderbots-data:
-  team-robocin-data:
+  team-robocin-a-data:
+  team-robocin-b-data:
   team-robofei-data:
   team-roboteamtwente-data:
-  team-uroborus-data:
-  team-roboime-data:
   team-robodragons-data:
   team-src-data:
   team-kiks-data:
-  team-kgpkubs-data:
-  team-omid-data:
-  team-robojackets-data:
-  team-tritons-data:
 
 networks:
   match:
