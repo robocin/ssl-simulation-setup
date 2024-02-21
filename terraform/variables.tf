@@ -8,10 +8,11 @@ variable "cidr_subnet" {
 }
 variable "region" {
   description = "The region Terraform deploys your instance"
+  default = "us-east-1"
 }
 variable "instance_type" {
   description = "The AWS EC2 instance type"
-  default = "c5a.xlarge"
+  default = "c7a.2xlarge"
 }
 variable "root_domain" {
   description = "The external domain at which the instance will be reachable"
