@@ -12,7 +12,7 @@ variable "region" {
 }
 variable "instance_type" {
   description = "The AWS EC2 instance type"
-  default = "c7a.4xlarge"
+  default = "c7a.8xlarge"
 }
 variable "root_domain" {
   description = "The external domain at which the instance will be reachable"
